@@ -7,18 +7,24 @@ namespace CardGame
 {
     public partial class Form1 : Form
     {
+        private Player player_1;
+        private Player player_2;
+
         public Form1()
         {
             InitializeComponent();
 
-            Player player_1 = new Player();
-            Player player_2 = new Player();
+            player_1 = new Player();
+            player_2 = new Player();
 
             Deck deck = initDecks();
 
             player_1.loadDeck(deck.Player1_deck);
             player_2.loadDeck(deck.Player2_deck);
 
+            player_1.printCurrentDeck();
+            player_2.printCurrentDeck();
+            
         }
 
         private Deck initDecks()
@@ -38,19 +44,19 @@ namespace CardGame
         public void loadCurrentDeck(List<String> currentDeck, int playerNumber)
         {
             //gracz po lewo to 1
-            
-            for (int i = 0; i < currentDeck.Count; i++)
+            List<String> currentDeckOfPlayer = new List<String>();
+            foreach(String card in currentDeck)
             {
-                currentDeck.Add(i.ToString());
+                currentDeckOfPlayer.Add(card);
             }
 
             if (playerNumber == 1)
             {
-                listBox1.DataSource = currentDeck;
+                listBox1.DataSource = currentDeckOfPlayer;
             }
             else
             {
-                listBox3.DataSource = currentDeck;
+                listBox3.DataSource = currentDeckOfPlayer;
             }
             
         }
@@ -67,7 +73,8 @@ namespace CardGame
 
         private void rozdajTalieButton(object sender, EventArgs e)
         {
-
+            loadCurrentDeck(player_1.CurrentDeck, 1);
+            loadCurrentDeck(player_2.CurrentDeck, 2);
         }
     }
 
