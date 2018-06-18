@@ -107,6 +107,8 @@ namespace CardGame
 
             loadCurrentDeck(player_2.CurrentDeck, 2);
             loadWonCardsDeck(player_2.WonCardsDeck, 2);
+
+            addCardsToWarListBox(player_1.War.MyCardDeck, player_1.War.OpponentCardDeck);
         }
 
 
@@ -120,6 +122,11 @@ namespace CardGame
             {
                 label9.Text = "Player_2 wins!";
             }
+        }
+
+        private void resetGameResultInformation()
+        {
+            label9.Text = "";
         }
 
         private void makeMovePlayer1(object sender, EventArgs e)
@@ -261,6 +268,8 @@ namespace CardGame
 
         private void startNewGame(object sender, EventArgs e)
         {
+
+
             player_1 = new Player();
             player_2 = new Player();
 
@@ -272,6 +281,8 @@ namespace CardGame
             player_1.printCurrentDeck();
             player_2.printCurrentDeck();
 
+
+            resetGameResultInformation();
             loadDecks();
         }
 
