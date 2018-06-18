@@ -231,6 +231,7 @@ namespace CardGame
 
                     //player_1.addCardsToWarBonus(player1_card, player2_card);
                     //player_2.addCardsToWarBonus(player2_card, player1_card);
+                    addCardsToWarListBox(player_1.War.MyCardDeck, player_1.War.OpponentCardDeck);
 
                     loadCurrentDeck(player_1.CurrentDeck, 1);
                     loadWonCardsDeck(player_1.WonCardsDeck, 1);
