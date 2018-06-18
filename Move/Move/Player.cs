@@ -154,7 +154,7 @@ namespace gameSpace
                 if(isWar)
                 {
                     //removeCardFromDeck(myCard);
-
+                    Console.WriteLine("Rozstrzgajaca potyczka podczas wojny");
                     war.addCardsToDecks(myCard, opponentCard);
 
                     //tu musze dodac karty do kupki z puli wojny
@@ -166,6 +166,7 @@ namespace gameSpace
                 }
                 else
                 {
+                    Console.WriteLine("Rozstrzgajaca potyczka podczas wojny");
                     //removeCardFromDeck(myCard);
 
                     wonCardsDeck.Add(myCard);
@@ -214,6 +215,8 @@ namespace gameSpace
 
             war.addCardsToDecks(myCard, opponentCard);
             isMoveAvailable = true;
+
+            isBonusWar = false;
         }
 
 

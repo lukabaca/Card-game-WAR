@@ -179,6 +179,10 @@ namespace CardGame
 
 
         }
+        private void clearWarListBoxes()
+        {
+           
+        }
         private void fightButton(object sender, EventArgs e)
         {
             
@@ -224,6 +228,9 @@ namespace CardGame
                     listBox3.Items.Clear();
                     listBox4.Items.Clear();
                     */
+
+                    //player_1.addCardsToWarBonus(player1_card, player2_card);
+                    //player_2.addCardsToWarBonus(player2_card, player1_card);
 
                     loadCurrentDeck(player_1.CurrentDeck, 1);
                     loadWonCardsDeck(player_1.WonCardsDeck, 1);
