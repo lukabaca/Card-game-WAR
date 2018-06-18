@@ -11,7 +11,9 @@ namespace gameSpace
         private static Dictionary<String, int> comparingMap = new Dictionary<string, int>()
         {
          {"2", 2}, { "3",3 }, { "4",4 }, { "5", 5 },
-         { "6", 6 }, { "7", 7 }
+         { "6", 6 }, { "7", 7 }, {"8", 8 }, {"9", 9},
+         {"10", 10}, {"J", 11 }, {"D", 12}, {"K", 13},
+         {"A", 14}
          
         };
 
@@ -26,7 +28,7 @@ namespace gameSpace
 
         private War war;
 
-        private Boolean isMoveMade;
+        private Boolean isMoveAvailable;
 
         private Boolean isBonusWar;
 
@@ -37,7 +39,7 @@ namespace gameSpace
             isPlaying = true;
 
             isWar = false;
-            isMoveMade = false;
+            isMoveAvailable = true;
 
             isBonusWar = false;
 
@@ -64,7 +66,7 @@ namespace gameSpace
 
         public String getCardFromTop()
         {
-            isMoveMade = true;
+            isMoveAvailable = false;
 
             int lastElement = -1;
 
@@ -202,7 +204,7 @@ namespace gameSpace
                
                 //przypadek wojny
             }
-            isMoveMade = false;
+            isMoveAvailable = true;
 
         }
         //dodaje karty do puli wojny, te co sa 'ukryte'
@@ -211,6 +213,7 @@ namespace gameSpace
             //currentDeck.Remove(myCard);
 
             war.addCardsToDecks(myCard, opponentCard);
+            isMoveAvailable = true;
         }
 
 
@@ -361,16 +364,16 @@ namespace gameSpace
             }
         }
 
-        public bool IsMoveMade
+        public bool IsMoveAvailable
         {
             get
             {
-                return isMoveMade;
+                return isMoveAvailable;
             }
 
             set
             {
-                isMoveMade = value;
+                isMoveAvailable = value;
             }
         }
 

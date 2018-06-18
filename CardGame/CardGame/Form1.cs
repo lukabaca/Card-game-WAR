@@ -100,7 +100,7 @@ namespace CardGame
         private void makeMovePlayer1(object sender, EventArgs e)
         {
             //Console.WriteLine("Player_1 moves");
-            if (!player_1.IsMoveMade)
+            if (player_1.IsMoveAvailable)
             {
                 if (player_1.IsPlaying)
                 {
@@ -132,7 +132,7 @@ namespace CardGame
         private void makeMovePlayer2(object sender, EventArgs e)
         {
             //Console.WriteLine("Player_2 moves");
-            if (!player_2.IsMoveMade)
+            if (player_2.IsMoveAvailable)
             {
                 if (player_2.IsPlaying)
                 {
@@ -193,6 +193,8 @@ namespace CardGame
                 {
                     player_1.addCardsToWarBonus(player1_card, player2_card);
                     player_2.addCardsToWarBonus(player2_card, player1_card);
+
+
                 }
                 else
                 {
