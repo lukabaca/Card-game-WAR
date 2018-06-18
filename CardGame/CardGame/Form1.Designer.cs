@@ -49,6 +49,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -163,7 +164,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Rozdaj talie";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.loadDecks);
+            this.button3.Click += new System.EventHandler(this.loadDecks_Button);
             // 
             // label6
             // 
@@ -247,11 +248,22 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "Player_2";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(404, 76);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 21;
+            this.button5.Text = "Nowa gra";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.startNewGame);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 481);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -304,6 +316,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button5;
     }
 }
 

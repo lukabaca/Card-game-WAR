@@ -10,9 +10,13 @@ namespace CardGame
         private Player player_1;
         private Player player_2;
 
+        
+
         public Form1()
         {
             InitializeComponent();
+
+
 
             player_1 = new Player();
             player_2 = new Player();
@@ -35,6 +39,7 @@ namespace CardGame
 
             deck.shuffleGameDeck();
             deck.initPlayersDecks();
+
 
             return deck;
         }
@@ -89,11 +94,21 @@ namespace CardGame
 
         }
 
-        private void loadDecks(object sender, EventArgs e)
+        private void loadDecks_Button(object sender, EventArgs e)
+        {
+            loadDecks();
+        }
+
+        private void loadDecks()
         {
             loadCurrentDeck(player_1.CurrentDeck, 1);
+            loadWonCardsDeck(player_1.WonCardsDeck, 1);
+
+
             loadCurrentDeck(player_2.CurrentDeck, 2);
+            loadWonCardsDeck(player_2.WonCardsDeck, 2);
         }
+
 
         private void setGameResultInformation(String winnerPlayer)
         {
@@ -243,6 +258,24 @@ namespace CardGame
             }
             
         }
+
+        private void startNewGame(object sender, EventArgs e)
+        {
+            player_1 = new Player();
+            player_2 = new Player();
+
+            Deck deck = initDecks();
+
+            player_1.loadDeck(deck.Player1_deck);
+            player_2.loadDeck(deck.Player2_deck);
+
+            player_1.printCurrentDeck();
+            player_2.printCurrentDeck();
+
+            loadDecks();
+        }
+
+        
     }
 
     
