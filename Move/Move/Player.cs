@@ -176,7 +176,7 @@ namespace gameSpace
                
                 //przypadek wojny
             }
-
+            isMoveMaked = false;
 
         }
         //dodaje karty do puli wojny, te co sa 'ukryte'

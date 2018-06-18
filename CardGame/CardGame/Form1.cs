@@ -63,6 +63,26 @@ namespace CardGame
             
         }
 
+        public void loadWonCardsDeck(List<String> wonCardsDeck, int playerNumber)
+        {
+            //gracz po lewo to 1
+            List<String> currentDeckOfPlayer = new List<String>();
+            foreach (String card in wonCardsDeck)
+            {
+                currentDeckOfPlayer.Add(card);
+            }
+
+            if (playerNumber == 1)
+            {
+                listBox2.DataSource = currentDeckOfPlayer;
+            }
+            else
+            {
+                listBox4.DataSource = currentDeckOfPlayer;
+            }
+
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -78,6 +98,8 @@ namespace CardGame
             loadCurrentDeck(player_1.CurrentDeck, 1);
             loadCurrentDeck(player_2.CurrentDeck, 2);
         }
+
+        
 
         private void makeMovePlayer1(object sender, EventArgs e)
         {
@@ -102,6 +124,49 @@ namespace CardGame
 
                 label7.Text = card;
             }
+        }
+
+        private void fightButton(object sender, EventArgs e)
+        {
+            
+            
+            if ((label6.Text.Length) > 0 && (label7.Text.Length > 0))
+            {
+                Console.WriteLine("FIGHT");
+                String player1_card = label6.Text;
+                String player2_card = label7.Text;
+
+                player_1.cardBattle(player1_card, player2_card);
+                player_2.cardBattle(player2_card, player1_card);
+
+                
+                Console.WriteLine("PLAYER 1 after battle");
+                player_1.printCurrentDeck();
+                player_1.printWonCardsDeck();
+
+                Console.WriteLine("PLAYER 2 after battle");
+                player_2.printCurrentDeck();
+                player_2.printWonCardsDeck();
+                
+
+                /*
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox3.Items.Clear();
+                listBox4.Items.Clear();
+                */
+
+                loadCurrentDeck(player_1.CurrentDeck, 1);
+                loadWonCardsDeck(player_1.WonCardsDeck, 1);
+
+                loadCurrentDeck(player_2.CurrentDeck, 2);
+                loadWonCardsDeck(player_2.WonCardsDeck, 2);
+
+                label6.Text = "";
+                label7.Text = "";
+
+            }
+            
         }
     }
 
