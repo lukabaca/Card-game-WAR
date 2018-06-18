@@ -25,7 +25,8 @@ namespace gameSpace
         private Boolean isWar;
 
         private War war;
-        
+
+        private Boolean isMoveMaked;
 
         public Player()
         {
@@ -33,27 +34,14 @@ namespace gameSpace
             wonCardsDeck = new List<String>();
             isPlaying = true;
             isWar = false;
+            isMoveMaked = false;
 
             war = new War();
         }
 
         public String getCardFromTop()
         {
-            /*
-            int lastElement = -1;
-
-            if (!isCurrentDeckEmpty())
-            {
-                lastElement = currentDeck.Count - 1;
-                
-            }
-            else if (!iswonCardsDeckyEmpty())
-            {
-                loadDeck(wonCardsDeck);
-
-                lastElement = currentDeck.Count - 1;                
-            }
-            */
+            isMoveMaked = true;
 
             int lastElement = -1;
 
@@ -344,6 +332,19 @@ namespace gameSpace
             set
             {
                 wonCardsDeck = value;
+            }
+        }
+
+        public bool IsMoveMaked
+        {
+            get
+            {
+                return isMoveMaked;
+            }
+
+            set
+            {
+                isMoveMaked = value;
             }
         }
     }

@@ -24,6 +24,8 @@ namespace CardGame
 
             player_1.printCurrentDeck();
             player_2.printCurrentDeck();
+
+            
             
         }
 
@@ -71,10 +73,35 @@ namespace CardGame
 
         }
 
-        private void rozdajTalieButton(object sender, EventArgs e)
+        private void loadDecks(object sender, EventArgs e)
         {
             loadCurrentDeck(player_1.CurrentDeck, 1);
             loadCurrentDeck(player_2.CurrentDeck, 2);
+        }
+
+        private void makeMovePlayer1(object sender, EventArgs e)
+        {
+            //Console.WriteLine("Player_1 moves");
+            if (!player_1.IsMoveMaked)
+            {
+                String card = player_1.getCardFromTop();
+                Console.WriteLine("Player_1 card: " + card);
+
+                label6.Text = card;
+            }
+
+        }
+
+        private void makeMovePlayer2(object sender, EventArgs e)
+        {
+            //Console.WriteLine("Player_2 moves");
+            if (!player_2.IsMoveMaked)
+            {
+                String card = player_2.getCardFromTop();
+                Console.WriteLine("Player_2 card: " + card);
+
+                label7.Text = card;
+            }
         }
     }
 
