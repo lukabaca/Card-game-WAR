@@ -106,10 +106,18 @@ namespace CardGame
             //Console.WriteLine("Player_1 moves");
             if (!player_1.IsMoveMaked)
             {
-                String card = player_1.getCardFromTop();
-                Console.WriteLine("Player_1 card: " + card);
+                if (player_1.IsPlaying)
+                {
+                    String card = player_1.getCardFromTop();
+                    loadCurrentDeck(player_1.CurrentDeck, 1);
+                    Console.WriteLine("Player_1 card: " + card);
 
-                label6.Text = card;
+                    label6.Text = card;
+                }
+                else
+                {
+                    Console.WriteLine("Player_1 lost");
+                }
             }
 
         }
@@ -119,10 +127,18 @@ namespace CardGame
             //Console.WriteLine("Player_2 moves");
             if (!player_2.IsMoveMaked)
             {
-                String card = player_2.getCardFromTop();
-                Console.WriteLine("Player_2 card: " + card);
+                if (player_2.IsPlaying)
+                {
+                    String card = player_2.getCardFromTop();
+                    loadCurrentDeck(player_1.CurrentDeck, 2);
+                    Console.WriteLine("Player_2 card: " + card);
 
-                label7.Text = card;
+                    label7.Text = card;
+                }
+                else
+                {
+                    Console.WriteLine("Player_2 lost");
+                }
             }
         }
 

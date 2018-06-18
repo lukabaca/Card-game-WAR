@@ -48,6 +48,7 @@ namespace gameSpace
             if (!isCurrentDeckEmpty())
             {
                 Console.WriteLine("current lsita nie jest pusta");
+
                 lastElement = currentDeck.Count - 1;
             }
             else
@@ -69,7 +70,10 @@ namespace gameSpace
                 }
             }
 
-            return currentDeck.ElementAt(lastElement);
+            String card = currentDeck.ElementAt(lastElement);
+            removeCardFromDeck(card);
+
+            return card;
 
         }
 
@@ -126,7 +130,7 @@ namespace gameSpace
 
                 if(isWar)
                 {
-                    removeCardFromDeck(myCard);
+                    //removeCardFromDeck(myCard);
 
                     war.addCardsToDecks(myCard, opponentCard);
 
@@ -139,7 +143,7 @@ namespace gameSpace
                 }
                 else
                 {
-                    removeCardFromDeck(myCard);
+                    //removeCardFromDeck(myCard);
 
                     wonCardsDeck.Add(myCard);
                     wonCardsDeck.Add(opponentCard);
@@ -154,14 +158,14 @@ namespace gameSpace
 
                 if(isWar)
                 {
-                    removeCardFromDeck(myCard);
+                    //removeCardFromDeck(myCard);
 
                     war.clearDecks();
                     isWar = false;
                 }
                 else
                 {
-                    removeCardFromDeck(myCard);
+                    //removeCardFromDeck(myCard);
                 }
             }
 
@@ -170,7 +174,7 @@ namespace gameSpace
                 Console.WriteLine("JEST WOJNA");
                 isWar = true;
 
-                removeCardFromDeck(myCard);
+                //removeCardFromDeck(myCard);
 
                 war.addCardsToDecks(myCard, opponentCard);
                
