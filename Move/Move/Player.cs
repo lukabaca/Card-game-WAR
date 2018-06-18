@@ -8,6 +8,7 @@ namespace gameSpace
 {
     public class Player
     {
+        /*
         private static Dictionary<String, int> comparingMap = new Dictionary<string, int>()
         {
          {"2", 2}, { "3",3 }, { "4",4 }, { "5", 5 },
@@ -15,6 +16,14 @@ namespace gameSpace
          {"10", 10}, {"J", 11 }, {"D", 12}, {"K", 13},
          {"A", 14}
          
+        };
+        */
+
+        private static Dictionary<String, int> comparingMap = new Dictionary<string, int>()
+        {
+         {"2", 2}, { "3",3 }, { "4",4 }, { "5", 5 },
+         { "6", 6 }, { "7", 7 }
+
         };
 
 
