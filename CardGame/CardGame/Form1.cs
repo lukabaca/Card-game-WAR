@@ -95,24 +95,27 @@ namespace CardGame
             loadCurrentDeck(player_2.CurrentDeck, 2);
         }
 
-        
+        private void setGameResultInformation(String winnerPlayer)
+        {
+            if(winnerPlayer.Equals("Player_1"))
+            {
+                label9.Text = "Player_1 wins!";
+            }
+            if (winnerPlayer.Equals("Player_2"))
+            {
+                label9.Text = "Player_2 wins!";
+            }
+        }
 
         private void makeMovePlayer1(object sender, EventArgs e)
         {
             //Console.WriteLine("Player_1 moves");
             if (player_1.IsMoveAvailable)
             {
+         
+                String card = player_1.getCardFromTop();
                 if (player_1.IsPlaying)
                 {
-                    /*
-                    if(player_1.isCurrentDeckEmptyAndTransfer())
-                    {
-                        loadCurrentDeck(player_1.CurrentDeck, 1);
-                        player_1.resetWonCardsDeckk();
-                        loadCurrentDeck(player_1.WonCardsDeck, 1);
-                    }
-                    */
-                    String card = player_1.getCardFromTop();
 
                     loadCurrentDeck(player_1.CurrentDeck, 1);
                     loadWonCardsDeck(player_1.WonCardsDeck, 1);
@@ -123,6 +126,7 @@ namespace CardGame
                 }
                 else
                 {
+                    setGameResultInformation("Player_2");
                     Console.WriteLine("Player_1 lost");
                 }
             }
@@ -134,18 +138,10 @@ namespace CardGame
             //Console.WriteLine("Player_2 moves");
             if (player_2.IsMoveAvailable)
             {
+                
+                String card = player_2.getCardFromTop();
                 if (player_2.IsPlaying)
                 {
-                    /*
-                    if (player_2.isCurrentDeckEmptyAndTransfer())
-                    {
-                        loadCurrentDeck(player_2.CurrentDeck, 2);
-                        player_2.resetWonCardsDeckk();
-                        loadCurrentDeck(player_2.WonCardsDeck, 2);
-                    }*/
-
-                    String card = player_2.getCardFromTop();
-
                     loadCurrentDeck(player_2.CurrentDeck, 2);
                     loadWonCardsDeck(player_2.WonCardsDeck, 2);
 
@@ -155,6 +151,7 @@ namespace CardGame
                 }
                 else
                 {
+                    setGameResultInformation("Player_1");
                     Console.WriteLine("Player_2 lost");
                 }
             }

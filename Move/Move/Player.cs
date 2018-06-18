@@ -67,7 +67,7 @@ namespace gameSpace
         public String getCardFromTop()
         {
             isMoveAvailable = false;
-
+            String card = "";
             int lastElement = -1;
 
             if (!isCurrentDeckEmpty())
@@ -75,6 +75,9 @@ namespace gameSpace
                 Console.WriteLine("current lsita nie jest pusta");
 
                 lastElement = currentDeck.Count - 1;
+                card = currentDeck.ElementAt(lastElement);
+
+                removeCardFromDeck(card);
             }
             else
             {
@@ -87,17 +90,19 @@ namespace gameSpace
                     resetWonCardsDeckk();
 
                     lastElement = currentDeck.Count - 1;
+                    card = currentDeck.ElementAt(lastElement);
+
+                    removeCardFromDeck(card);
                 }
                 //jesli oba decki sa puste to znaczy ze przegralem
                 else
                 {
                     isPlaying = false;
+                    card = null;
                 }
             }
 
-            String card = currentDeck.ElementAt(lastElement);
-            removeCardFromDeck(card);
-
+            
             return card;
 
         }

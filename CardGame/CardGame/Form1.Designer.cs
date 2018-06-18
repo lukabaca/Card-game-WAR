@@ -46,6 +46,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -214,11 +215,21 @@
             this.listBox6.Size = new System.Drawing.Size(81, 95);
             this.listBox6.TabIndex = 17;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.Location = new System.Drawing.Point(590, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 37);
+            this.label9.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 481);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.listBox6);
             this.Controls.Add(this.listBox5);
             this.Controls.Add(this.button4);
@@ -265,6 +276,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.Label label9;
     }
 }
 
