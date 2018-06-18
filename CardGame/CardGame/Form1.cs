@@ -33,12 +33,8 @@ namespace CardGame
         {
             Deck deck = new Deck();
 
-            //deck.printDeck(Deck.GameDeck);
             deck.shuffleGameDeck();
             deck.initPlayersDecks();
-
-            //deck.printDeck(deck.ServerDeck);
-            //deck.printDeck(deck.ClientDeck);
 
             return deck;
         }
@@ -104,12 +100,23 @@ namespace CardGame
         private void makeMovePlayer1(object sender, EventArgs e)
         {
             //Console.WriteLine("Player_1 moves");
-            if (!player_1.IsMoveMaked)
+            if (!player_1.IsMoveMade)
             {
                 if (player_1.IsPlaying)
                 {
+                    /*
+                    if(player_1.isCurrentDeckEmptyAndTransfer())
+                    {
+                        loadCurrentDeck(player_1.CurrentDeck, 1);
+                        player_1.resetWonCardsDeckk();
+                        loadCurrentDeck(player_1.WonCardsDeck, 1);
+                    }
+                    */
                     String card = player_1.getCardFromTop();
+
                     loadCurrentDeck(player_1.CurrentDeck, 1);
+                    loadWonCardsDeck(player_1.WonCardsDeck, 1);
+
                     Console.WriteLine("Player_1 card: " + card);
 
                     label6.Text = card;
@@ -125,12 +132,23 @@ namespace CardGame
         private void makeMovePlayer2(object sender, EventArgs e)
         {
             //Console.WriteLine("Player_2 moves");
-            if (!player_2.IsMoveMaked)
+            if (!player_2.IsMoveMade)
             {
                 if (player_2.IsPlaying)
                 {
+                    /*
+                    if (player_2.isCurrentDeckEmptyAndTransfer())
+                    {
+                        loadCurrentDeck(player_2.CurrentDeck, 2);
+                        player_2.resetWonCardsDeckk();
+                        loadCurrentDeck(player_2.WonCardsDeck, 2);
+                    }*/
+
                     String card = player_2.getCardFromTop();
-                    loadCurrentDeck(player_1.CurrentDeck, 2);
+
+                    loadCurrentDeck(player_2.CurrentDeck, 2);
+                    loadWonCardsDeck(player_2.WonCardsDeck, 2);
+
                     Console.WriteLine("Player_2 card: " + card);
 
                     label7.Text = card;
@@ -141,7 +159,26 @@ namespace CardGame
                 }
             }
         }
+        private void addCardsToWarListBox(List<String> cardWarDeckOfPlayer_1, List<String> cardWarDeckOfPlayer_2)
+        {
+            List<String> warDeckPlayer_1 = new List<String>();
+            List<String> warDeckPlayer_2 = new List<String>();
 
+            foreach (String card in cardWarDeckOfPlayer_1)
+            {
+                warDeckPlayer_1.Add(card);
+            }
+
+            foreach (String card in cardWarDeckOfPlayer_2)
+            {
+                warDeckPlayer_2.Add(card);
+            }
+
+            listBox5.DataSource = warDeckPlayer_1;
+            listBox6.DataSource = warDeckPlayer_2;
+
+
+        }
         private void fightButton(object sender, EventArgs e)
         {
             
@@ -152,31 +189,46 @@ namespace CardGame
                 String player1_card = label6.Text;
                 String player2_card = label7.Text;
 
-                player_1.cardBattle(player1_card, player2_card);
-                player_2.cardBattle(player2_card, player1_card);
+                if (player_1.IsBonusWar)//w tym przypadku karty nie walcza ale sa dodane do puli do wojny
+                {
+                    player_1.addCardsToWarBonus(player1_card, player2_card);
+                    player_2.addCardsToWarBonus(player2_card, player1_card);
+                }
+                else
+                {
+                    player_1.cardBattle(player1_card, player2_card);
+                    player_2.cardBattle(player2_card, player1_card);
+                }
 
-                
-                Console.WriteLine("PLAYER 1 after battle");
-                player_1.printCurrentDeck();
-                player_1.printWonCardsDeck();
+                if (player_1.IsWar && player_2.IsWar)
+                {
+                    addCardsToWarListBox(player_1.War.MyCardDeck, player_1.War.OpponentCardDeck);
+                }
+                else
+                {
 
-                Console.WriteLine("PLAYER 2 after battle");
-                player_2.printCurrentDeck();
-                player_2.printWonCardsDeck();
-                
+                    Console.WriteLine("PLAYER 1 after battle");
+                    player_1.printCurrentDeck();
+                    player_1.printWonCardsDeck();
 
-                /*
-                listBox1.Items.Clear();
-                listBox2.Items.Clear();
-                listBox3.Items.Clear();
-                listBox4.Items.Clear();
-                */
+                    Console.WriteLine("PLAYER 2 after battle");
+                    player_2.printCurrentDeck();
+                    player_2.printWonCardsDeck();
 
-                loadCurrentDeck(player_1.CurrentDeck, 1);
-                loadWonCardsDeck(player_1.WonCardsDeck, 1);
 
-                loadCurrentDeck(player_2.CurrentDeck, 2);
-                loadWonCardsDeck(player_2.WonCardsDeck, 2);
+                    /*
+                    listBox1.Items.Clear();
+                    listBox2.Items.Clear();
+                    listBox3.Items.Clear();
+                    listBox4.Items.Clear();
+                    */
+
+                    loadCurrentDeck(player_1.CurrentDeck, 1);
+                    loadWonCardsDeck(player_1.WonCardsDeck, 1);
+
+                    loadCurrentDeck(player_2.CurrentDeck, 2);
+                    loadWonCardsDeck(player_2.WonCardsDeck, 2);
+                }
 
                 label6.Text = "";
                 label7.Text = "";

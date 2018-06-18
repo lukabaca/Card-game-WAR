@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace gameSpace
 {
-    [Serializable]
-    class War
+    
+    public class War
     {
         private List<String> myCardDeck;
         private List<String> opponentCardDeck;

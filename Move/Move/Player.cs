@@ -26,22 +26,45 @@ namespace gameSpace
 
         private War war;
 
-        private Boolean isMoveMaked;
+        private Boolean isMoveMade;
+
+        private Boolean isBonusWar;
 
         public Player()
         {
             currentDeck = new List<String>();
             wonCardsDeck = new List<String>();
             isPlaying = true;
+
             isWar = false;
-            isMoveMaked = false;
+            isMoveMade = false;
+
+            isBonusWar = false;
 
             war = new War();
+        }
+        //na pewno zmien nazwe, chodzi o to ze 
+        //jak current deck jest pusty i na kupce sa karty to przerzuc karty
+        public Boolean isCurrentDeckEmptyAndTransfer()
+        {
+            Boolean flag = false;
+            if (isCurrentDeckEmpty())
+            {
+                if (!iswWonCardsDeckyEmpty())
+                {
+                    flag = true;
+                }
+            }
+            else
+            {
+                flag = false;
+            }
+            return flag;
         }
 
         public String getCardFromTop()
         {
-            isMoveMaked = true;
+            isMoveMade = true;
 
             int lastElement = -1;
 
@@ -54,7 +77,7 @@ namespace gameSpace
             else
             {
                 Console.WriteLine("current lsita jest pusta");
-                if (!iswonCardsDeckyEmpty())
+                if (!iswWonCardsDeckyEmpty())
                 {
                     Console.WriteLine("won card deck nie jest pusta");
                     loadDeck(wonCardsDeck);
@@ -120,8 +143,6 @@ namespace gameSpace
             int myCardValue = comparingMap[myCardFormatted];
             int opponentCardValue = comparingMap[opponentCardFormatted];
 
-            //Console.WriteLine("My card value: " + myCardValue);
-            //Console.WriteLine("Opponent card value: " + opponentCardValue);
 
             if (myCardValue > opponentCardValue)
             {
@@ -174,19 +195,20 @@ namespace gameSpace
                 Console.WriteLine("JEST WOJNA");
                 isWar = true;
 
+                isBonusWar = true;
                 //removeCardFromDeck(myCard);
 
                 war.addCardsToDecks(myCard, opponentCard);
                
                 //przypadek wojny
             }
-            isMoveMaked = false;
+            isMoveMade = false;
 
         }
         //dodaje karty do puli wojny, te co sa 'ukryte'
         public void addCardsToWarBonus(String myCard, String opponentCard)
         {
-            currentDeck.Remove(myCard);
+            //currentDeck.Remove(myCard);
 
             war.addCardsToDecks(myCard, opponentCard);
         }
@@ -204,7 +226,7 @@ namespace gameSpace
             }
         }
 
-        private Boolean iswonCardsDeckyEmpty()
+        private Boolean iswWonCardsDeckyEmpty()
         {
             if (wonCardsDeck.Count > 0)
             {
@@ -228,17 +250,17 @@ namespace gameSpace
             
             if (!isCurrentDeckEmpty())
             {
-                Console.WriteLine("current lsita nie jest pusta");
+                //Console.WriteLine("current lsita nie jest pusta");
                 currentDeck.Remove(card);
             }
             else 
             {
-                Console.WriteLine("current lsita jest pusta");
-                if (!iswonCardsDeckyEmpty())
+                //Console.WriteLine("current lsita jest pusta");
+                if (!iswWonCardsDeckyEmpty())
                 {
-                    Console.WriteLine("won card deck nie jest pusta");
+                    //Console.WriteLine("won card deck nie jest pusta");
                     loadDeck(wonCardsDeck);
-                    Console.WriteLine("CZYSZCZE wonCardsDeck");
+                    //Console.WriteLine("CZYSZCZE wonCardsDeck");
                     resetWonCardsDeckk();
                 }
                 //jesli oba decki sa puste to znaczy ze przegralem
@@ -339,16 +361,42 @@ namespace gameSpace
             }
         }
 
-        public bool IsMoveMaked
+        public bool IsMoveMade
         {
             get
             {
-                return isMoveMaked;
+                return isMoveMade;
             }
 
             set
             {
-                isMoveMaked = value;
+                isMoveMade = value;
+            }
+        }
+
+        public War War
+        {
+            get
+            {
+                return war;
+            }
+
+            set
+            {
+                war = value;
+            }
+        }
+
+        public bool IsBonusWar
+        {
+            get
+            {
+                return isBonusWar;
+            }
+
+            set
+            {
+                isBonusWar = value;
             }
         }
     }
