@@ -127,6 +127,9 @@ namespace CardGame
         private void resetGameResultInformation()
         {
             label9.Text = "";
+
+            label6.Text = "";
+            label7.Text = "";
         }
 
         private void makeMovePlayer1(object sender, EventArgs e)
