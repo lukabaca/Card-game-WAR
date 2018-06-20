@@ -54,24 +54,7 @@ namespace gameSpace
 
             war = new War();
         }
-        //na pewno zmien nazwe, chodzi o to ze 
-        //jak current deck jest pusty i na kupce sa karty to przerzuc karty
-        public Boolean isCurrentDeckEmptyAndTransfer()
-        {
-            Boolean flag = false;
-            if (isCurrentDeckEmpty())
-            {
-                if (!iswWonCardsDeckyEmpty())
-                {
-                    flag = true;
-                }
-            }
-            else
-            {
-                flag = false;
-            }
-            return flag;
-        }
+       
 
         public String getCardFromTop()
         {
@@ -138,14 +121,14 @@ namespace gameSpace
             return cardFormatted;
 
         }
-        private void addCardsToWonCardsDeckFromWar(List<String> myWarCardDeck, List<String> opponentWarCarDeck)
+        private void addCardsToWonCardsDeckFromWar(List<String> myWarCardDeck, List<String> opponentWarCardDeck)
         {
             foreach(String card in myWarCardDeck)
             {
                 wonCardsDeck.Add(card);
             }
 
-            foreach (String card in opponentWarCarDeck)
+            foreach (String card in opponentWarCardDeck)
             {
                 wonCardsDeck.Add(card);
             }
