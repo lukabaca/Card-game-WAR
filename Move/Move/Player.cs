@@ -55,20 +55,25 @@ namespace gameSpace
             war = new War();
         }
        
+        private String getLastCardFromDeck()
+        {
+            int lastElement = currentDeck.Count - 1;
+            String card = currentDeck.ElementAt(lastElement);
+            return card;
+        }
 
         public String getCardFromTop()
         {
             isMoveAvailable = false;
             String card = "";
-            int lastElement = -1;
+            
 
             if (!isCurrentDeckEmpty())
             {
                 Console.WriteLine("current lsita nie jest pusta");
 
-                lastElement = currentDeck.Count - 1;
-                card = currentDeck.ElementAt(lastElement);
 
+                card = getLastCardFromDeck();
                 removeCardFromDeck(card);
             }
             else
@@ -81,9 +86,7 @@ namespace gameSpace
                     Console.WriteLine("CZYSZCZE wonCardsDeck");
                     resetWonCardsDeckk();
 
-                    lastElement = currentDeck.Count - 1;
-                    card = currentDeck.ElementAt(lastElement);
-
+                    card = getLastCardFromDeck();
                     removeCardFromDeck(card);
                 }
                 //jesli oba decki sa puste to znaczy ze przegralem
